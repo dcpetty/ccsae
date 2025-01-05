@@ -1,0 +1,126 @@
+#!/usr/bin/env python3
+#
+# ccsae.py
+#
+# CCSAE map on https://sites.google.com/view/coastal-climate-science/explainers
+#
+
+import os.path as op
+
+WIDTH, DX, DY, dx, dy = 740, 10, 0, 150, 50
+image_uri = f"https://drive.google.com/thumbnail?sz=w{WIDTH}&id=1ar4V1rMkHv4eR4sxu3aK1VeCSMSKssRM"
+image_base = './images/fseicdace-740x850'
+image_ext = '.png'
+output_path = '../ccsae.html'
+rects = [ (t[0] + DX, t[1] + DY, t[2] + DX, t[3] + DY, )
+    if len(t) == 4 else (t[0] + DX, t[1] + DY, t[0] + DX + dx, t[1] + DY + dy, )
+        for t in (
+(270,  75, ),           # A
+(400, 165, ),           # B
+(260, 265, ),           # C
+(450, 270, 550, 320, ), # D
+(550, 270, 650, 320, ), # E
+( 85, 245, ),           # F
+(340, 460, ),           # G
+(535, 365, ),           # H
+(490, 460, ),           # I
+(505, 570, ),           # J
+(180, 580, 300, 630, ), # K
+(300, 580, 420, 630, ), # L
+(240, 715, ),           # M
+(375, 785, ),           # N
+) ]
+# print(rects)
+
+links = [ l for l in """
+
+Increasing CO2 in the atmosphere
+
+https://sites.google.com/view/coastal-climate-science/explainers/increasing-co2
+
+Warmer air and the greenhouse effect
+
+https://sites.google.com/view/coastal-climate-science/explainers/warmer-air
+
+Warmer ocean water
+
+https://sites.google.com/view/coastal-climate-science/explainers/warmer-ocean
+
+More water vapor in the air
+
+https://sites.google.com/view/coastal-climate-science/explainers/more-water-vapor
+
+Melting glaciers and ice sheets
+
+https://sites.google.com/view/coastal-climate-science/explainers/melting-glaciers
+
+Ocean acidification
+
+https://sites.google.com/view/coastal-climate-science/explainers/ocean-acidification
+
+Rising sea level
+
+https://sites.google.com/view/coastal-climate-science/explainers/sea-level
+
+Regional changes in water salinity
+
+https://sites.google.com/view/coastal-climate-science/explainers/water-salinity
+
+Changes to Atlantic Ocean circulation
+
+https://sites.google.com/view/coastal-climate-science/explainers/ocean-circulation
+
+Extreme and changing weather
+
+https://sites.google.com/view/coastal-climate-science/explainers/extreme-weather
+
+Less dissolved oxygen in water
+
+https://sites.google.com/view/coastal-climate-science/explainers/less-dissolved-oxygen
+
+Harmful algal blooms (HABs)
+
+https://sites.google.com/view/coastal-climate-science/explainers/algal-blooms
+
+Harm to marine life
+
+https://sites.google.com/view/coastal-climate-science/explainers/harm-to-marine
+
+Harm to human and terrestrial life
+
+https://sites.google.com/view/coastal-climate-science/explainers/harm-to-human
+""".split('\n') if l ]
+# print(links)
+
+html_map = f"""<map name="ccsae-map">
+{{rects}}
+</map>"""
+html_area = """<area shape="rect" coords="{coords}" href="{href}" alt="{alt}"
+  onmouseover="light('{id}')" onmouseout="dark()" />"""
+html_areas = '\n'.join([ html_area.format(coords=','.join(f"{c:03d}" for c in rects[i]),
+    href=links[2 * i + 1], alt=links[2 * i], id=chr(ord('a') + i)) for i in range(len(rects)) ])
+# print(html_areas)
+
+html_doc = """<div>
+{map}
+<img id="ccsae" style="display: block; margin: auto; background-color: gold;"
+  usemap="#ccsae-map" src="{uri}{ext}" alt="ccsae" />
+<script>
+function light(id) {{
+  e = document.querySelector(`img#ccsae`);
+  e.src = `{uri}-${{id}}{ext}`;
+  // console.log(e);
+}}
+function dark() {{
+  e = document.querySelector(`img#ccsae`);
+  e.src = `{uri}{ext}`;
+  // console.log(e);
+}}
+</script>
+</div>
+"""
+html = html_doc.format(map=html_map.format(rects=html_areas), uri=image_base, ext=image_ext)
+path = op.realpath(op.join(op.dirname(op.realpath(__file__)), output_path))
+with open(path, 'w') as f:
+    print(f"Writing {path}...")
+    f.write(html)
