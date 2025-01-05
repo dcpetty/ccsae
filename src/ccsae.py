@@ -9,7 +9,7 @@ import os.path as op
 
 WIDTH, DX, DY, dx, dy = 740, 10, 0, 150, 50
 image_uri = f"https://drive.google.com/thumbnail?sz=w{WIDTH}&id=1ar4V1rMkHv4eR4sxu3aK1VeCSMSKssRM"
-image_base = './images/fseicdace-740x850'
+image_base = 'https://dcpetty.dev/ccsae/images/fseicdace-740x850'
 image_ext = '.png'
 output_path = '../ccsae.html'
 rects = [ (t[0] + DX, t[1] + DY, t[2] + DX, t[3] + DY, )
