@@ -8,15 +8,15 @@
 import os.path as op
 
 # Constant parameters for the image.
-version, WIDTH, DX, DY, dx, dy = '0.1', 740, 10, 0, 150, 50
+version, show_through, WIDTH, DX, DY, dx, dy = '0.1', 'gold', 740, 10, 0, 150, 50
 image_uri = f"https://drive.google.com/thumbnail?sz=w{WIDTH}&id=1ar4V1rMkHv4eR4sxu3aK1VeCSMSKssRM"
 image_base = 'https://dcpetty.dev/ccsae/images/fseicdace-740x850'
 image_ext = '.png'
 output_path = '../ccsae.html'
 
 # Rectangle coordinates (a list of 14 4-tuples) for the image map areas A - N.
-rects = [ (t[0] + DX, t[1] + DY, t[2] + DX, t[3] + DY, )
-    if len(t) == 4 else (t[0] + DX, t[1] + DY, t[0] + DX + dx, t[1] + DY + dy, )
+rects = [ (t[0] + DX, t[1] + DY, t[2] + DX, t[3] + DY, ) if len(t) == 4
+    else (t[0] + DX, t[1] + DY, t[0] + DX + dx, t[1] + DY + dy, )
         for t in (
 (270,  75, ),           # A
 (400, 165, ),           # B
@@ -105,7 +105,7 @@ html_map_temp = f"""<map name="ccsae-map">
 html_doc_temp = """<!-- https://dcpetty.dev/ccsae/ v{ver} -->
 <div>
 {imap}
-<img id="ccsae" style="display: block; margin: auto; background-color: gold;"
+<img id="ccsae" style="display: block; margin: auto; background-color: {stc};"
   usemap="#ccsae-map" src="{uri}{ext}" alt="ccsae" />
 <script>
   const uri = `{uri}`, ext = `{ext}`;
@@ -129,7 +129,7 @@ html_map = map=html_map_temp.format(rects=html_areas)
 # print(html_map)
 
 html_doc = html_doc_temp.format(
-    ver=version, imap=html_map, uri=image_base, ext=image_ext)
+    ver=version, imap=html_map, stc=show_through, uri=image_base, ext=image_ext)
 # print(html_doc)
 
 # Write html_doc to path.
