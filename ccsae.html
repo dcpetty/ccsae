@@ -32,15 +32,10 @@
 <img id="ccsae" style="display: block; margin: auto; background-color: gold;"
   usemap="#ccsae-map" src="https://dcpetty.dev/ccsae/images/fseicdace-740x850.png" alt="ccsae" />
 <script>
-function light(id) {
-  e = document.querySelector(`img#ccsae`);
-  e.src = `https://dcpetty.dev/ccsae/images/fseicdace-740x850-${id}.png`;
-  // console.log(e);
-}
-function dark() {
-  e = document.querySelector(`img#ccsae`);
-  e.src = `https://dcpetty.dev/ccsae/images/fseicdace-740x850.png`;
-  // console.log(e);
-}
+const uri = `https://dcpetty.dev/ccsae/images/fseicdace-740x850`, ext = `.png`;
+const img = document.querySelector(`img#ccsae`);
+console.log(img);
+function light(id) { img.src = `${uri}-${id}${ext}`; }
+function dark() { img.src = `${uri}${ext}`; }
 </script>
 </div>

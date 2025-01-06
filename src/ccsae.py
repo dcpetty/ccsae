@@ -7,11 +7,14 @@
 
 import os.path as op
 
+# Constant parameters for the image.
 WIDTH, DX, DY, dx, dy = 740, 10, 0, 150, 50
 image_uri = f"https://drive.google.com/thumbnail?sz=w{WIDTH}&id=1ar4V1rMkHv4eR4sxu3aK1VeCSMSKssRM"
 image_base = 'https://dcpetty.dev/ccsae/images/fseicdace-740x850'
 image_ext = '.png'
 output_path = '../ccsae.html'
+
+# Rectangle coordinates (a list of 14 4-tuples) for the image map areas A - N.
 rects = [ (t[0] + DX, t[1] + DY, t[2] + DX, t[3] + DY, )
     if len(t) == 4 else (t[0] + DX, t[1] + DY, t[0] + DX + dx, t[1] + DY + dy, )
         for t in (
@@ -32,6 +35,7 @@ rects = [ (t[0] + DX, t[1] + DY, t[2] + DX, t[3] + DY, )
 ) ]
 # print(rects)
 
+# A list of description followed by URI for 14 image map areas from text.
 links = [ l for l in """
 
 Increasing CO2 in the atmosphere
@@ -92,35 +96,42 @@ https://sites.google.com/view/coastal-climate-science/explainers/harm-to-human
 """.split('\n') if l ]
 # print(links)
 
-html_map = f"""<map name="ccsae-map">
+# HTML templates for area, map, and doc.
+html_area_temp = """<area shape="rect" coords="{coords}" href="{href}" alt="{alt}"
+  onmouseover="light('{id}')" onmouseout="dark()" />"""
+html_map_temp = f"""<map name="ccsae-map">
 {{rects}}
 </map>"""
-html_area = """<area shape="rect" coords="{coords}" href="{href}" alt="{alt}"
-  onmouseover="light('{id}')" onmouseout="dark()" />"""
-html_areas = '\n'.join([ html_area.format(coords=','.join(f"{c:03d}" for c in rects[i]),
-    href=links[2 * i + 1], alt=links[2 * i], id=chr(ord('a') + i)) for i in range(len(rects)) ])
-# print(html_areas)
-
-html_doc = """<div>
+html_doc_temp = """<div>
 {map}
 <img id="ccsae" style="display: block; margin: auto; background-color: gold;"
   usemap="#ccsae-map" src="{uri}{ext}" alt="ccsae" />
 <script>
-function light(id) {{
-  e = document.querySelector(`img#ccsae`);
-  e.src = `{uri}-${{id}}{ext}`;
-  // console.log(e);
-}}
-function dark() {{
-  e = document.querySelector(`img#ccsae`);
-  e.src = `{uri}{ext}`;
-  // console.log(e);
-}}
+const uri = `{uri}`, ext = `{ext}`;
+const img = document.querySelector(`img#ccsae`);
+console.log(img);
+function light(id) {{ img.src = `${{uri}}-${{id}}${{ext}}`; }}
+function dark() {{ img.src = `${{uri}}${{ext}}`; }}
 </script>
 </div>
 """
-html = html_doc.format(map=html_map.format(rects=html_areas), uri=image_base, ext=image_ext)
+
+# Create HTML for areas, map, and doc.
+html_areas = '\n'.join([
+    html_area_temp.format(coords=','.join(f"{c:03d}" for c in rects[i]),
+        href=links[2 * i + 1], alt=links[2 * i], id=chr(ord('a') + i))
+            for i in range(len(rects))
+])
+# print(html_areas)
+
+html_map = map=html_map_temp.format(rects=html_areas)
+# print(html_map)
+
+html_doc = html_doc_temp.format(map=html_map, uri=image_base, ext=image_ext)
+# print(html_doc)
+
+# Write html_doc to path.
 path = op.realpath(op.join(op.dirname(op.realpath(__file__)), output_path))
 with open(path, 'w') as f:
     print(f"Writing {path}...")
-    f.write(html)
+    f.write(html_doc)

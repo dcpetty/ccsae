@@ -15,6 +15,7 @@ As a secondary process, add some [JavaScript](https://typescriptlang.org/) funct
 The generated `<div>` suitable for embedding in a [Google site](https://sites.google.com/) can be found [here](https://raw.githubusercontent.com/dcpetty/ccsae/refs/heads/main/ccsae.html) and is shown below:
 
 ```html
+
 <div>
 <map name="ccsae-map">
 <area shape="rect" coords="280,075,430,125" href="https://sites.google.com/view/coastal-climate-science/explainers/increasing-co2" alt="Increasing CO2 in the atmosphere"
@@ -52,8 +53,8 @@ The generated `<div>` suitable for embedding in a [Google site](https://sites.go
 const uri = `https://dcpetty.dev/ccsae/images/fseicdace-740x850`, ext = `.png`;
 const img = document.querySelector(`img#ccsae`);
 console.log(img);
-function light(id) { if (img) img.src = `${uri}-${id}${ext}`; }
-function dark() { if (img) img.src = `${uri}${ext}`; }
+function light(id) { img.src = `${uri}-${id}${ext}`; }
+function dark() { img.src = `${uri}${ext}`; }
 </script>
 </div>
 ```
