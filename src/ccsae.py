@@ -8,7 +8,7 @@
 import os.path as op
 
 # Constant parameters for the image.
-version, show_through, WIDTH, DX, DY, dx, dy = '0.1', 'gold', 740, 10, 0, 150, 50
+version, show_through, WIDTH, DX, DY, dx, dy = '0.2', 'gold', 740, 10, 0, 150, 50
 image_uri = f"https://drive.google.com/thumbnail?sz=w{WIDTH}&id=1ar4V1rMkHv4eR4sxu3aK1VeCSMSKssRM"
 image_base = 'https://dcpetty.dev/ccsae/images/fseicdace-740x850'
 image_ext = '.png'
