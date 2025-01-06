@@ -8,7 +8,7 @@
 import os.path as op
 
 # Constant parameters for the image.
-WIDTH, DX, DY, dx, dy = 740, 10, 0, 150, 50
+version, WIDTH, DX, DY, dx, dy = '0.1', 740, 10, 0, 150, 50
 image_uri = f"https://drive.google.com/thumbnail?sz=w{WIDTH}&id=1ar4V1rMkHv4eR4sxu3aK1VeCSMSKssRM"
 image_base = 'https://dcpetty.dev/ccsae/images/fseicdace-740x850'
 image_ext = '.png'
@@ -102,16 +102,17 @@ html_area_temp = """<area shape="rect" coords="{coords}" href="{href}" alt="{alt
 html_map_temp = f"""<map name="ccsae-map">
 {{rects}}
 </map>"""
-html_doc_temp = """<div>
-{map}
+html_doc_temp = """<!-- https://dcpetty.dev/ccsae/ v{ver} -->
+<div>
+{imap}
 <img id="ccsae" style="display: block; margin: auto; background-color: gold;"
   usemap="#ccsae-map" src="{uri}{ext}" alt="ccsae" />
 <script>
-const uri = `{uri}`, ext = `{ext}`;
-const img = document.querySelector(`img#ccsae`);
-// console.log(img);
-function light(id) {{ img.src = `${{uri}}-${{id}}${{ext}}`; }}
-function dark() {{ img.src = `${{uri}}${{ext}}`; }}
+  const uri = `{uri}`, ext = `{ext}`;
+  const img = document.querySelector(`img#ccsae`);
+  // console.log(img);
+  function light(id) {{ img.src = `${{uri}}-${{id}}${{ext}}`; }}
+  function dark() {{ img.src = `${{uri}}${{ext}}`; }}
 </script>
 </div>
 """
@@ -127,7 +128,8 @@ html_areas = '\n'.join([
 html_map = map=html_map_temp.format(rects=html_areas)
 # print(html_map)
 
-html_doc = html_doc_temp.format(map=html_map, uri=image_base, ext=image_ext)
+html_doc = html_doc_temp.format(
+    ver=version, imap=html_map, uri=image_base, ext=image_ext)
 # print(html_doc)
 
 # Write html_doc to path.

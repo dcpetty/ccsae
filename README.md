@@ -15,6 +15,7 @@ As a secondary process, add some [JavaScript](https://typescriptlang.org/) funct
 The generated `<div>` suitable for embedding in a [Google site](https://sites.google.com/) can be found in raw form [here](https://raw.githubusercontent.com/dcpetty/ccsae/refs/heads/main/ccsae.html) and is shown below:
 
 ```html
+<!-- https://dcpetty.dev/ccsae/ v0.1 -->
 <div>
 <map name="ccsae-map">
 <area shape="rect" coords="280,075,430,125" href="https://sites.google.com/view/coastal-climate-science/explainers/increasing-co2" alt="increasing co2 in the atmosphere"
@@ -49,11 +50,11 @@ The generated `<div>` suitable for embedding in a [Google site](https://sites.go
 <img id="ccsae" style="display: block; margin: auto; background-color: gold;"
   usemap="#ccsae-map" src="https://dcpetty.dev/ccsae/images/fseicdace-740x850.png" alt="ccsae" />
 <script>
-const uri = `https://dcpetty.dev/ccsae/images/fseicdace-740x850`, ext = `.png`;
-const img = document.querySelector(`img#ccsae`);
-// console.log(img);
-function light(id) { img.src = `${uri}-${id}${ext}`; }
-function dark() { img.src = `${uri}${ext}`; }
+  const uri = `https://dcpetty.dev/ccsae/images/fseicdace-740x850`, ext = `.png`;
+  const img = document.querySelector(`img#ccsae`);
+  // console.log(img);
+  function light(id) { img.src = `${uri}-${id}${ext}`; }
+  function dark() { img.src = `${uri}${ext}`; }
 </script>
 </div>
 ```
