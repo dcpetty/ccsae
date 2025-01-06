@@ -119,7 +119,7 @@ function dark() {{ img.src = `${{uri}}${{ext}}`; }}
 # Create HTML for areas, map, and doc.
 html_areas = '\n'.join([
     html_area_temp.format(coords=','.join(f"{c:03d}" for c in rects[i]),
-        href=links[2 * i + 1], alt=links[2 * i], id=chr(ord('a') + i))
+        href=links[2 * i + 1], alt=links[2 * i].lower(), id=chr(ord('a') + i))
             for i in range(len(rects))
 ])
 # print(html_areas)

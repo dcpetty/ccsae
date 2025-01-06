@@ -15,36 +15,35 @@ As a secondary process, add some [JavaScript](https://typescriptlang.org/) funct
 The generated `<div>` suitable for embedding in a [Google site](https://sites.google.com/) can be found [here](https://raw.githubusercontent.com/dcpetty/ccsae/refs/heads/main/ccsae.html) and is shown below:
 
 ```html
-
 <div>
 <map name="ccsae-map">
-<area shape="rect" coords="280,075,430,125" href="https://sites.google.com/view/coastal-climate-science/explainers/increasing-co2" alt="Increasing CO2 in the atmosphere"
+<area shape="rect" coords="280,075,430,125" href="https://sites.google.com/view/coastal-climate-science/explainers/increasing-co2" alt="increasing co2 in the atmosphere"
   onmouseover="light('a')" onmouseout="dark()" />
-<area shape="rect" coords="410,165,560,215" href="https://sites.google.com/view/coastal-climate-science/explainers/warmer-air" alt="Warmer air and the greenhouse effect"
+<area shape="rect" coords="410,165,560,215" href="https://sites.google.com/view/coastal-climate-science/explainers/warmer-air" alt="warmer air and the greenhouse effect"
   onmouseover="light('b')" onmouseout="dark()" />
-<area shape="rect" coords="270,265,420,315" href="https://sites.google.com/view/coastal-climate-science/explainers/warmer-ocean" alt="Warmer ocean water"
+<area shape="rect" coords="270,265,420,315" href="https://sites.google.com/view/coastal-climate-science/explainers/warmer-ocean" alt="warmer ocean water"
   onmouseover="light('c')" onmouseout="dark()" />
-<area shape="rect" coords="460,270,560,320" href="https://sites.google.com/view/coastal-climate-science/explainers/more-water-vapor" alt="More water vapor in the air"
+<area shape="rect" coords="460,270,560,320" href="https://sites.google.com/view/coastal-climate-science/explainers/more-water-vapor" alt="more water vapor in the air"
   onmouseover="light('d')" onmouseout="dark()" />
-<area shape="rect" coords="560,270,660,320" href="https://sites.google.com/view/coastal-climate-science/explainers/melting-glaciers" alt="Melting glaciers and ice sheets"
+<area shape="rect" coords="560,270,660,320" href="https://sites.google.com/view/coastal-climate-science/explainers/melting-glaciers" alt="melting glaciers and ice sheets"
   onmouseover="light('e')" onmouseout="dark()" />
-<area shape="rect" coords="095,245,245,295" href="https://sites.google.com/view/coastal-climate-science/explainers/ocean-acidification" alt="Ocean acidification"
+<area shape="rect" coords="095,245,245,295" href="https://sites.google.com/view/coastal-climate-science/explainers/ocean-acidification" alt="ocean acidification"
   onmouseover="light('f')" onmouseout="dark()" />
-<area shape="rect" coords="350,460,500,510" href="https://sites.google.com/view/coastal-climate-science/explainers/sea-level" alt="Rising sea level"
+<area shape="rect" coords="350,460,500,510" href="https://sites.google.com/view/coastal-climate-science/explainers/sea-level" alt="rising sea level"
   onmouseover="light('g')" onmouseout="dark()" />
-<area shape="rect" coords="545,365,695,415" href="https://sites.google.com/view/coastal-climate-science/explainers/water-salinity" alt="Regional changes in water salinity"
+<area shape="rect" coords="545,365,695,415" href="https://sites.google.com/view/coastal-climate-science/explainers/water-salinity" alt="regional changes in water salinity"
   onmouseover="light('h')" onmouseout="dark()" />
-<area shape="rect" coords="500,460,650,510" href="https://sites.google.com/view/coastal-climate-science/explainers/ocean-circulation" alt="Changes to Atlantic Ocean circulation"
+<area shape="rect" coords="500,460,650,510" href="https://sites.google.com/view/coastal-climate-science/explainers/ocean-circulation" alt="changes to atlantic ocean circulation"
   onmouseover="light('i')" onmouseout="dark()" />
-<area shape="rect" coords="515,570,665,620" href="https://sites.google.com/view/coastal-climate-science/explainers/extreme-weather" alt="Extreme and changing weather"
+<area shape="rect" coords="515,570,665,620" href="https://sites.google.com/view/coastal-climate-science/explainers/extreme-weather" alt="extreme and changing weather"
   onmouseover="light('j')" onmouseout="dark()" />
-<area shape="rect" coords="190,580,310,630" href="https://sites.google.com/view/coastal-climate-science/explainers/less-dissolved-oxygen" alt="Less dissolved oxygen in water"
+<area shape="rect" coords="190,580,310,630" href="https://sites.google.com/view/coastal-climate-science/explainers/less-dissolved-oxygen" alt="less dissolved oxygen in water"
   onmouseover="light('k')" onmouseout="dark()" />
-<area shape="rect" coords="310,580,430,630" href="https://sites.google.com/view/coastal-climate-science/explainers/algal-blooms" alt="Harmful algal blooms (HABs)"
+<area shape="rect" coords="310,580,430,630" href="https://sites.google.com/view/coastal-climate-science/explainers/algal-blooms" alt="harmful algal blooms (habs)"
   onmouseover="light('l')" onmouseout="dark()" />
-<area shape="rect" coords="250,715,400,765" href="https://sites.google.com/view/coastal-climate-science/explainers/harm-to-marine" alt="Harm to marine life"
+<area shape="rect" coords="250,715,400,765" href="https://sites.google.com/view/coastal-climate-science/explainers/harm-to-marine" alt="harm to marine life"
   onmouseover="light('m')" onmouseout="dark()" />
-<area shape="rect" coords="385,785,535,835" href="https://sites.google.com/view/coastal-climate-science/explainers/harm-to-human" alt="Harm to human and terrestrial life"
+<area shape="rect" coords="385,785,535,835" href="https://sites.google.com/view/coastal-climate-science/explainers/harm-to-human" alt="harm to human and terrestrial life"
   onmouseover="light('n')" onmouseout="dark()" />
 </map>
 <img id="ccsae" style="display: block; margin: auto; background-color: gold;"
