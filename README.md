@@ -6,13 +6,13 @@ The process of developing this `<div>` is as follows:
 
 - Start with an [original image](./images/fseicdace-original.png) with 14 *buttons* and a list of 14 corresponding *URIs* (with their corresponding descriptions).
 - After [Photoshop](https://www.adobe.com/products/photoshop.html)ping the [image](./images/fseicdace-740x850.png) to a 740 &#215; 850 format, make a [map](https://drive.google.com/file/d/1FprjDBazKrCQTaQn9zqDLBZvqCTdRRNK/) of coordinates of 14 *rectangles* corresponding to the 14 *buttons*.
-- Write a [Python](https://docs.python.org/3/) [script](./src/ccsae.py) to parse / compose the inputs and create the `<img>` [`<map>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map) and [`<area>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area) elements where the *buttons* link to the *URIs*.
+- Write a [Python](https://docs.python.org/3/) [script](https://github.com/dcpetty/ccsae/blob/main/src/ccsae.py) to parse / compose the inputs and create the `<img>` [`<map>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map) and [`<area>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area) elements where the *buttons* link to the *URIs*.
 
 As a secondary process, add some [JavaScript](https://typescriptlang.org/) functions for `onmouseover` and `onmouseout` that swap the images in and out for 14 [images](https://github.com/dcpetty/ccsae/tree/main/images) that have the additional letters *'a'* &ndash; *'n'* in their filenames &mdash; each of which has a transparent background for one of the buttons, so the `<img>` background color can show through. 
 
 ## Code
 
-The generated `<div>` suitable for embedding in a [Google site](https://sites.google.com/) can be found [here](https://raw.githubusercontent.com/dcpetty/ccsae/refs/heads/main/ccsae.html) and is shown below:
+The generated `<div>` suitable for embedding in a [Google site](https://sites.google.com/) can be found in raw form [here](https://raw.githubusercontent.com/dcpetty/ccsae/refs/heads/main/ccsae.html) and is shown below:
 
 ```html
 <div>
@@ -51,7 +51,7 @@ The generated `<div>` suitable for embedding in a [Google site](https://sites.go
 <script>
 const uri = `https://dcpetty.dev/ccsae/images/fseicdace-740x850`, ext = `.png`;
 const img = document.querySelector(`img#ccsae`);
-console.log(img);
+// console.log(img);
 function light(id) { img.src = `${uri}-${id}${ext}`; }
 function dark() { img.src = `${uri}${ext}`; }
 </script>

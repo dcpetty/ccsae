@@ -109,7 +109,7 @@ html_doc_temp = """<div>
 <script>
 const uri = `{uri}`, ext = `{ext}`;
 const img = document.querySelector(`img#ccsae`);
-console.log(img);
+// console.log(img);
 function light(id) {{ img.src = `${{uri}}-${{id}}${{ext}}`; }}
 function dark() {{ img.src = `${{uri}}${{ext}}`; }}
 </script>
