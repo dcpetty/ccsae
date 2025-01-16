@@ -14,14 +14,18 @@ The process of developing this `<div>` is as follows:
 
 As a secondary process:
 
-- Add some [JavaScript](https://typescriptlang.org/) functions for `onmouseover` and `onmouseout` that swap the images in and out for 14 [images](https://github.com/dcpetty/ccsae/tree/main/images) that have the additional letters *'a'* &ndash; *'n'* in their filenames &mdash; each of which has a transparent background for one of the buttons, so the `<img>` background color can show through. 
+- Add some [JavaScript](https://typescriptlang.org/) functions for `onmouseover` and `onmouseout` that swap the images in and out for 14 [images](https://github.com/dcpetty/ccsae/tree/main/images) that have the additional letters *'a'* &ndash; *'n'* in their filenames &mdash; each of which has a transparent background for one of the *buttons*, so the `<img>` background color can show through. 
+
+## Version 0.3
+
+In the third version, the files with `740x850` in the filenames seem to have trouble being served from [Google Sites](https://sites.google.com/) &mdash; apparently certain (image) files with numerals in the filenames at certain positions are not served under certain circumstances. **[NEED AUTHORITATIVE REFERENCE]**
 
 ## Code
 
 The generated `<div>` suitable for embedding in a [Google site](https://sites.google.com/) can be found in raw form [here](https://raw.githubusercontent.com/dcpetty/ccsae/refs/heads/main/ccsae.html) and is shown below:
 
 ```html
-<!-- https://dcpetty.dev/ccsae/ v0.2 -->
+<!-- https://dcpetty.dev/ccsae/ v0.3 -->
 <div>
 <map name="ccsae-map">
 <area shape="rect" coords="280,075,430,125" href="https://sites.google.com/view/coastal-climate-science/explainers/increasing-co2" alt="increasing co2 in the atmosphere"
@@ -54,9 +58,9 @@ The generated `<div>` suitable for embedding in a [Google site](https://sites.go
   onmouseover="light('n')" onmouseout="dark()" />
 </map>
 <img id="ccsae" style="display: block; margin: auto; background-color: gold;"
-  usemap="#ccsae-map" src="https://dcpetty.dev/ccsae/images/fseicdace-740x850.png" alt="ccsae" />
+  usemap="#ccsae-map" src="https://dcpetty.dev/ccsae/images/fseicdace.png" alt="ccsae" />
 <script>
-  const uri = `https://dcpetty.dev/ccsae/images/fseicdace-740x850`, ext = `.png`;
+  const uri = `https://dcpetty.dev/ccsae/images/fseicdace`, ext = `.png`;
   const img = document.querySelector(`img#ccsae`);
   // console.log(img);
   function light(id) { img.src = `${uri}-${id}${ext}`; }
