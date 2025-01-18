@@ -18,7 +18,11 @@ As a secondary process:
 
 ## Version 0.3
 
-In the third version, the files with `740x850` in the filenames seem to have trouble being served from [Google Sites](https://sites.google.com/) &mdash; apparently certain (image) files with numerals in the filenames at certain positions are not served under certain circumstances. **[NEED AUTHORITATIVE REFERENCE]**
+In the third version, the files with `740x850` in the filenames seem to have trouble being served to browsers with [AdBlockPlus](https://adblockplus.org/) &mdash; [apparently](https://stackoverflow.com/questions/17255493/how-to-stop-adblock-plus-blocking-images-in-html-page) certain (image) files with image sizes in the filenames are blocked.
+
+*However*, that was not *my* problem&hellip; in my case, using [Arc](https://arc.net/) with [uBlock Origin](https://ublockorigin.com/), I had to whitelist [`sites.google.com`](https://sites.google.com/) to get the embedded `<div>` to load.
+
+*Therefore*, I added back in `*780x850.png` to [`images`](https://github.com/dcpetty/ccsae/tree/main/images) so there are now *two* copies of each `.PNG` file with different filenames.
 
 ## Code
 
