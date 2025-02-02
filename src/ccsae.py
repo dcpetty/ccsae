@@ -139,3 +139,12 @@ path = op.realpath(op.join(op.dirname(op.realpath(__file__)), output_path))
 with open(path, 'w') as f:
     print(f"Writing {path}...")
     f.write(html_doc)
+"""
+# Print links in original order 'AFBCDEHGIKLJMN', then alt text in original order.
+print()
+for i in range(len(links)):
+    if i % 2 == 0: print(links[i])
+print()
+for i in range(len(links)):
+    if i % 2 == 1: print(links[i])
+"""
