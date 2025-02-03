@@ -24,12 +24,6 @@ In the third version, the files with `740x850` in the filenames seem to have tro
 
 *Therefore*, I added back in `*780x850.png` to [`images`](https://github.com/dcpetty/ccsae/tree/main/images) so there are now *two* copies of each `.PNG` file with different filenames.
 
-## Version 0.4
-
-In order to allow for easier adjustments to the diagram, version 0.4 is a [p5.js](https://p5js.org/) sketch available at [https://dcpetty.dev/p5js/ccsae/](https://dcpetty.dev/p5js/ccsae/) based on this [map](https://drive.google.com/file/d/1FprjDBazKrCQTaQn9zqDLBZvqCTdRRNK/) and this [sheet](https://docs.google.com/spreadsheets/d/1rNqqxYPTbS7i4eP5O07fCUB0CsrdaG4itB4KsOd3UGo/) and editable on this [sketch](https://editor.p5js.org/dcpetty/sketches/x1MXpMMEI).
-
-This is a <span style="font-variant: small-caps;">`Draft`</span>, with more work needed. The original approach using an `<img>` [`<map>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map) is still extant.
-
 ## Code
 
 The generated `<div>` suitable for embedding in a [Google site](https://sites.google.com/) can be found in raw form [here](https://raw.githubusercontent.com/dcpetty/ccsae/refs/heads/main/ccsae.html) and is shown below:
@@ -78,6 +72,12 @@ The generated `<div>` suitable for embedding in a [Google site](https://sites.go
 </script>
 </div>
 ```
+
+## Version 0.4
+
+In order to allow for easier adjustments to the diagram, version 0.4 is a [p5.js](https://p5js.org/) sketch available at [https://dcpetty.dev/p5js/ccsae/](https://dcpetty.dev/p5js/ccsae/) (in the [p5js](https://github.com/dcpetty/p5js/) repo) based on this [map](https://drive.google.com/file/d/1FprjDBazKrCQTaQn9zqDLBZvqCTdRRNK/) and this [sheet](https://docs.google.com/spreadsheets/d/1rNqqxYPTbS7i4eP5O07fCUB0CsrdaG4itB4KsOd3UGo/) and editable on this [sketch](https://editor.p5js.org/dcpetty/sketches/x1MXpMMEI).
+
+This is a <span style="font-variant: small-caps;">`Draft`</span>, with more work needed. The original approach using an `<img>` [`<map>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map) is still extant.
 
 <hr>
 
