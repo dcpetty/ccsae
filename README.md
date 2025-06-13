@@ -24,42 +24,56 @@ In the third version, the files with `740x850` in the filenames seem to have tro
 
 *Therefore*, I added back in `*780x850.png` to [`images`](https://github.com/dcpetty/ccsae/tree/main/images) so there are now *two* copies of each `.PNG` file with different filenames.
 
+## Version 0.4
+
+In order to allow for easier adjustments to the diagram, version 0.4 is a [p5.js](https://p5js.org/) sketch available at [https://dcpetty.dev/p5js/ccsae/](https://dcpetty.dev/p5js/ccsae/) (in the [p5js](https://github.com/dcpetty/p5js/) repo) based on this [map](https://drive.google.com/file/d/1FprjDBazKrCQTaQn9zqDLBZvqCTdRRNK/) and this [sheet](https://docs.google.com/spreadsheets/d/1rNqqxYPTbS7i4eP5O07fCUB0CsrdaG4itB4KsOd3UGo/) and editable on this [sketch](https://editor.p5js.org/dcpetty/sketches/x1MXpMMEI).
+
+This is a <span style="font-variant: small-caps;">`Draft`</span>, with more work needed. The original approach using an `<img>` [`<map>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map) is still extant.
+
+## Version 0.5
+
+The fifth version of [https://dcpetty.dev/ccsae/ccsae.html](https://dcpetty.dev/ccsae/ccsae.html) using an `<img>` [`<map>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map) was updated to include images that reflect the latest from [https://sites.google.com/view/coastal-climate-science/](https://sites.google.com/view/coastal-climate-science/) and that now include *16* explainers.
+
 ## Code
 
 The generated `<div>` suitable for embedding in a [Google site](https://sites.google.com/) can be found in raw form [here](https://raw.githubusercontent.com/dcpetty/ccsae/refs/heads/main/ccsae.html) and is shown below:
 
 ```html
-<!-- https://dcpetty.dev/ccsae/ v0.3 -->
+<!-- https://dcpetty.dev/ccsae/ v0.5 -->
 <div>
 <map name="ccsae-map">
-<area shape="rect" coords="280,075,430,125" href="https://sites.google.com/view/coastal-climate-science/explainers/increasing-co2" alt="increasing co2 in the atmosphere"
+<area shape="rect" coords="275,090,455,130" href="https://sites.google.com/view/coastal-climate-science/explainers/increasing-co2" alt="increasing co2 in the atmosphere"
   onmouseover="light('a')" onmouseout="dark()" />
-<area shape="rect" coords="410,165,560,215" href="https://sites.google.com/view/coastal-climate-science/explainers/warmer-air" alt="warmer air and the greenhouse effect"
+<area shape="rect" coords="385,195,530,225" href="https://sites.google.com/view/coastal-climate-science/explainers/warmer-air" alt="warmer air and the greenhouse effect"
   onmouseover="light('b')" onmouseout="dark()" />
-<area shape="rect" coords="270,265,420,315" href="https://sites.google.com/view/coastal-climate-science/explainers/warmer-ocean" alt="warmer ocean water"
+<area shape="rect" coords="120,255,220,305" href="https://sites.google.com/view/coastal-climate-science/explainers/ocean-acidification" alt="ocean acidification"
   onmouseover="light('c')" onmouseout="dark()" />
-<area shape="rect" coords="460,270,560,320" href="https://sites.google.com/view/coastal-climate-science/explainers/more-water-vapor" alt="more water vapor in the air"
+<area shape="rect" coords="245,280,365,320" href="https://sites.google.com/view/coastal-climate-science/explainers/warmer-ocean" alt="warmer ocean water"
   onmouseover="light('d')" onmouseout="dark()" />
-<area shape="rect" coords="560,270,660,320" href="https://sites.google.com/view/coastal-climate-science/explainers/melting-glaciers" alt="melting glaciers and ice sheets"
+<area shape="rect" coords="440,275,535,335" href="https://sites.google.com/view/coastal-climate-science/explainers/more-water-vapor" alt="more water vapor in the air"
   onmouseover="light('e')" onmouseout="dark()" />
-<area shape="rect" coords="095,245,245,295" href="https://sites.google.com/view/coastal-climate-science/explainers/ocean-acidification" alt="ocean acidification"
+<area shape="rect" coords="555,280,675,320" href="https://sites.google.com/view/coastal-climate-science/explainers/melting-glaciers" alt="melting glaciers and ice sheets"
   onmouseover="light('f')" onmouseout="dark()" />
-<area shape="rect" coords="350,460,500,510" href="https://sites.google.com/view/coastal-climate-science/explainers/sea-level" alt="rising sea level"
+<area shape="rect" coords="585,375,705,415" href="https://sites.google.com/view/coastal-climate-science/explainers/water-salinity" alt="regional changes in water salinity"
   onmouseover="light('g')" onmouseout="dark()" />
-<area shape="rect" coords="545,365,695,415" href="https://sites.google.com/view/coastal-climate-science/explainers/water-salinity" alt="regional changes in water salinity"
+<area shape="rect" coords="460,435,540,490" href="https://sites.google.com/view/coastal-climate-science/explainers/More-clouds " alt="more clouds and turbulence"
   onmouseover="light('h')" onmouseout="dark()" />
-<area shape="rect" coords="500,460,650,510" href="https://sites.google.com/view/coastal-climate-science/explainers/ocean-circulation" alt="changes to atlantic ocean circulation"
+<area shape="rect" coords="375,475,450,515" href="https://sites.google.com/view/coastal-climate-science/explainers/sea-level" alt="rising sea level"
   onmouseover="light('i')" onmouseout="dark()" />
-<area shape="rect" coords="515,570,665,620" href="https://sites.google.com/view/coastal-climate-science/explainers/extreme-weather" alt="extreme and changing weather"
+<area shape="rect" coords="550,470,650,520" href="https://sites.google.com/view/coastal-climate-science/explainers/water-density" alt="changes in water density"
   onmouseover="light('j')" onmouseout="dark()" />
-<area shape="rect" coords="190,580,310,630" href="https://sites.google.com/view/coastal-climate-science/explainers/less-dissolved-oxygen" alt="less dissolved oxygen in water"
+<area shape="rect" coords="200,545,265,615" href="https://sites.google.com/view/coastal-climate-science/explainers/less-dissolved-oxygen" alt="less dissolved oxygen in water"
   onmouseover="light('k')" onmouseout="dark()" />
-<area shape="rect" coords="310,580,430,630" href="https://sites.google.com/view/coastal-climate-science/explainers/algal-blooms" alt="harmful algal blooms (habs)"
+<area shape="rect" coords="285,560,370,610" href="https://sites.google.com/view/coastal-climate-science/explainers/algal-blooms" alt="harmful algal blooms (habs)"
   onmouseover="light('l')" onmouseout="dark()" />
-<area shape="rect" coords="250,715,400,765" href="https://sites.google.com/view/coastal-climate-science/explainers/harm-to-marine" alt="harm to marine life"
+<area shape="rect" coords="450,540,575,600" href="https://sites.google.com/view/coastal-climate-science/explainers/extreme-weather" alt="extreme and changing weather"
   onmouseover="light('m')" onmouseout="dark()" />
-<area shape="rect" coords="385,785,535,835" href="https://sites.google.com/view/coastal-climate-science/explainers/harm-to-human" alt="harm to human and terrestrial life"
+<area shape="rect" coords="560,615,660,675" href="https://sites.google.com/view/coastal-climate-science/explainers/ocean-circulation" alt="changes to atlantic ocean circulation"
   onmouseover="light('n')" onmouseout="dark()" />
+<area shape="rect" coords="280,755,380,810" href="https://sites.google.com/view/coastal-climate-science/explainers/harm-to-marine" alt="harm to marine life"
+  onmouseover="light('o')" onmouseout="dark()" />
+<area shape="rect" coords="460,785,600,835" href="https://sites.google.com/view/coastal-climate-science/explainers/harm-to-human" alt="harm to human and terrestrial life"
+  onmouseover="light('p')" onmouseout="dark()" />
 </map>
 <img id="ccsae" style="display: block; margin: auto; background-color: gold;"
   usemap="#ccsae-map" src="https://dcpetty.dev/ccsae/images/fseicdace.png" alt="ccsae" />
@@ -72,12 +86,6 @@ The generated `<div>` suitable for embedding in a [Google site](https://sites.go
 </script>
 </div>
 ```
-
-## Version 0.4
-
-In order to allow for easier adjustments to the diagram, version 0.4 is a [p5.js](https://p5js.org/) sketch available at [https://dcpetty.dev/p5js/ccsae/](https://dcpetty.dev/p5js/ccsae/) (in the [p5js](https://github.com/dcpetty/p5js/) repo) based on this [map](https://drive.google.com/file/d/1FprjDBazKrCQTaQn9zqDLBZvqCTdRRNK/) and this [sheet](https://docs.google.com/spreadsheets/d/1rNqqxYPTbS7i4eP5O07fCUB0CsrdaG4itB4KsOd3UGo/) and editable on this [sketch](https://editor.p5js.org/dcpetty/sketches/x1MXpMMEI).
-
-This is a <span style="font-variant: small-caps;">`Draft`</span>, with more work needed. The original approach using an `<img>` [`<map>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map) is still extant.
 
 <hr>
 
