@@ -11,92 +11,82 @@
 import os.path as op
 
 # Constant parameters for the image.
-version, show_through, WIDTH, DX, DY, dx, dy = '0.3', 'gold', 740, 10, 0, 150, 50
-image_base = 'https://dcpetty.dev/ccsae/images/fseicdace'
-image_ext = '.png'
-output_path = '../ccsae.html'
+# version       CCSAE explainer image version
+# show_through  show-through color for transparent .PNG files
+# WIDTH         for use with f"https://drive.google.com/thumbnail?sz=w{WIDTH}"
+# DX, DY        adjustments to every (X, Y) coordinate   
+# dx, dy        default width & height from top-left corner to bottom-right corner
+version, show_through, WIDTH, DX, DY, dx, dy = '0.4', 'gold', 740, 0, 0, 120, 40
+image_base = 'https://dcpetty.dev/ccsae/images/fseicdace'   # base URI of images
+image_ext = '.png'                                          # URI image extension
+output_path = '../ccsae.html'                               # output path for .HTML
+sep = '\t'                                                  # .CSV seperator
 
-# Rectangle coordinates (a list of 14 4-tuples) for the image map areas A - N.
+# Rectangle coordinates (a list of 16 4-tuples) for the image map areas A - P.
 rects = [ (t[0] + DX, t[1] + DY, t[2] + DX, t[3] + DY, ) if len(t) == 4
     else (t[0] + DX, t[1] + DY, t[0] + DX + dx, t[1] + DY + dy, )
         for t in (
-(270,  75, ),           # A
-(400, 165, ),           # B
-(260, 265, ),           # C
-(450, 270, 550, 320, ), # D
-(550, 270, 650, 320, ), # E
-( 85, 245, ),           # F
-(340, 460, ),           # G
-(535, 365, ),           # H
-(490, 460, ),           # I
-(505, 570, ),           # J
-(180, 580, 300, 630, ), # K
-(300, 580, 420, 630, ), # L
-(240, 715, ),           # M
-(375, 785, ),           # N
+(275,  90, 455, 130, ), # A
+(385, 195, 530, 225, ), # B
+(120, 255, 220, 305, ), # C
+(245, 280, ),           # D
+(440, 275, 535, 335, ), # E
+(555, 280, ),           # F
+(585, 375, ),           # G
+(460, 435, 540, 490, ), # H
+(375, 475, 450, 515, ), # I
+(550, 470, 650, 520, ), # J
+(200, 545, 265, 615, ), # K
+(285, 560, 370, 610, ), # L
+(450, 540, 575, 600, ), # M
+(560, 615, 660, 675, ), # N
+(280, 755, 380, 810, ), # O
+(460, 785, 600, 835),   # P
 ) ]
-# print(rects)
 
-# A list of description followed by URI for 14 image map areas from text.
+# A list of description followed by URI for 16 image map areas from text.
 links = [ l for l in """
-
 Increasing CO2 in the atmosphere
-
 https://sites.google.com/view/coastal-climate-science/explainers/increasing-co2
-
 Warmer air and the greenhouse effect
-
 https://sites.google.com/view/coastal-climate-science/explainers/warmer-air
-
-Warmer ocean water
-
-https://sites.google.com/view/coastal-climate-science/explainers/warmer-ocean
-
-More water vapor in the air
-
-https://sites.google.com/view/coastal-climate-science/explainers/more-water-vapor
-
-Melting glaciers and ice sheets
-
-https://sites.google.com/view/coastal-climate-science/explainers/melting-glaciers
-
 Ocean acidification
-
 https://sites.google.com/view/coastal-climate-science/explainers/ocean-acidification
-
-Rising sea level
-
-https://sites.google.com/view/coastal-climate-science/explainers/sea-level
-
+Warmer ocean water
+https://sites.google.com/view/coastal-climate-science/explainers/warmer-ocean
+More water vapor in the air
+https://sites.google.com/view/coastal-climate-science/explainers/more-water-vapor
+Melting glaciers and ice sheets
+https://sites.google.com/view/coastal-climate-science/explainers/melting-glaciers
 Regional changes in water salinity
-
 https://sites.google.com/view/coastal-climate-science/explainers/water-salinity
-
-Changes to Atlantic Ocean circulation
-
-https://sites.google.com/view/coastal-climate-science/explainers/ocean-circulation
-
-Extreme and changing weather
-
-https://sites.google.com/view/coastal-climate-science/explainers/extreme-weather
-
+More clouds and turbulence
+https://sites.google.com/view/coastal-climate-science/explainers/More-clouds 
+Rising sea level
+https://sites.google.com/view/coastal-climate-science/explainers/sea-level
+Changes in water density
+https://sites.google.com/view/coastal-climate-science/explainers/water-density
 Less dissolved oxygen in water
-
 https://sites.google.com/view/coastal-climate-science/explainers/less-dissolved-oxygen
-
 Harmful algal blooms (HABs)
-
 https://sites.google.com/view/coastal-climate-science/explainers/algal-blooms
-
+Extreme and changing weather
+https://sites.google.com/view/coastal-climate-science/explainers/extreme-weather
+Changes to Atlantic Ocean circulation
+https://sites.google.com/view/coastal-climate-science/explainers/ocean-circulation
 Harm to marine life
-
 https://sites.google.com/view/coastal-climate-science/explainers/harm-to-marine
-
 Harm to human and terrestrial life
-
 https://sites.google.com/view/coastal-climate-science/explainers/harm-to-human
 """.split('\n') if l ]
 # print(links)
+
+# Create .CSV rows.
+rows = [sep.join(
+    [ chr(ord('a') + i) ] + [ str(c) for c in r ]
+        + [ links[2 * i + 1] ] + [ links[2 * i] ])
+    for i, r in enumerate(rects) ]
+# print('\n'.join(rows))
 
 # HTML templates for area, map, and doc.
 html_area_temp = """<area shape="rect" coords="{coords}" href="{href}" alt="{alt}"
