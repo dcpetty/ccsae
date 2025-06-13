@@ -16,7 +16,7 @@ import os.path as op
 # WIDTH         for use with f"https://drive.google.com/thumbnail?sz=w{WIDTH}"
 # DX, DY        adjustments to every (X, Y) coordinate   
 # dx, dy        default width & height from top-left corner to bottom-right corner
-version, show_through, WIDTH, DX, DY, dx, dy = '0.4', 'gold', 740, 0, 0, 120, 40
+version, show_through, WIDTH, DX, DY, dx, dy = '0.5', 'gold', 740, 0, 0, 120, 40
 image_base = 'https://dcpetty.dev/ccsae/images/fseicdace'   # base URI of images
 image_ext = '.png'                                          # URI image extension
 output_path = '../ccsae.html'                               # output path for .HTML
