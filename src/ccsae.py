@@ -2,29 +2,61 @@
 #
 # ccsae.py
 #
-# CCSAE map on https://sites.google.com/view/coastal-climate-science/explainers
+# CCSAE map on https://sites.google.com/view/coastal-climate-science/explainers.
 #
-# The Google Drive image link is:
-# image_uri = f"https://drive.google.com/thumbnail?sz=w{WIDTH}&id=1ar4V1rMkHv4eR4sxu3aK1VeCSMSKssRM"
+# Assumptions:
+# - rects is a list of N 4-tuples with upper left (x, y) and right (x, y)
+# - links is a list of 2N strings where the first of the pair is alt text describing
+#   the second of the pair link.
+#
+# Function:
+# - Create a <div> element with other elements, including a <map> element:
+#   <div>
+#     <map name="ccsae-map">
+#       <!-- ... -->
+#     </map>
+#     <!-- ... -->
+#   </div>
+# - create N <area> elements within the <map> element, for example:
+#   <area shape="rect" coords="275,090,455,130"
+#     href="https://sites.google.com/view/coastal-climate-science/explainers/increasing-co2"
+#     alt="increasing co2 in the atmosphere"
+#     onmouseover="light('a')" onmouseout="dark()" />
+# - Add an <img> element after the <map> element:
+#   <img id="ccsae" style="display: block; margin: auto; background-color: gold;"
+#     usemap="#ccsae-map" src="https://dcpetty.dev/ccsae/images/fseicdace.png"
+#     alt="ccsae" />
+# - Add an <script> element after the <img> element:
+#   <script>
+#     const uri = `https://dcpetty.dev/ccsae/images/fseicdace`, ext = `.png`;
+#     const img = document.querySelector(`img#ccsae`);
+#     // console.log(img);
+#     function light(id) { img.src = `${uri}-${id}${ext}`; }
+#     function dark() { img.src = `${uri}${ext}`; }
+#   </script>
+#   The <script> element includes two functions: light(id) and dark(). These are
+#   triggered by the onmouseover and onmouseout <area> events. They change the src
+#   <img> property to images that reflect the mouse position associated with the area.
+# - Write the completed <div> to output_path.
 #
 
 import os.path as op
 
 # Constant parameters for the image.
-# version       CCSAE explainer image version
-# show_through  show-through color for transparent .PNG files
-# WIDTH         for use with f"https://drive.google.com/thumbnail?sz=w{WIDTH}"
-# DX, DY        adjustments to every (X, Y) coordinate   
-# dx, dy        default width & height from top-left corner to bottom-right corner
-version, show_through, WIDTH, DX, DY, dx, dy = '0.5', 'gold', 740, 0, 0, 120, 40
+# DW, DH    default width & height from top-left corner to bottom-right corner
+# DX, DY    adjustments to every (X, Y) coordinate   
+# COLOR     show-through color for transparent .PNG files
+# WIDTH     for use with f"https://drive.google.com/thumbnail?sz=w{WIDTH}"
+# SEP       .CSV separator
+# VER       CCSAE explainer image version
+DW, DH, DX, DY, COLOR, WIDTH, SEP, VER = 120, 40, 0, 0, 'gold', 740, '\t', '0.5', 
 image_base = 'https://dcpetty.dev/ccsae/images/fseicdace'   # base URI of images
 image_ext = '.png'                                          # URI image extension
 output_path = '../ccsae.html'                               # output path for .HTML
-sep = '\t'                                                  # .CSV seperator
 
 # Rectangle coordinates (a list of 16 4-tuples) for the image map areas A - P.
 rects = [ (t[0] + DX, t[1] + DY, t[2] + DX, t[3] + DY, ) if len(t) == 4
-    else (t[0] + DX, t[1] + DY, t[0] + DX + dx, t[1] + DY + dy, )
+    else (t[0] + DX, t[1] + DY, t[0] + DX + DW, t[1] + DY + DH, )
         for t in (
 (275,  90, 455, 130, ), # A
 (385, 195, 530, 225, ), # B
@@ -82,15 +114,17 @@ https://sites.google.com/view/coastal-climate-science/explainers/harm-to-human
 # print(links)
 
 # Create .CSV rows.
-rows = [sep.join(
+lr, ll = len(rects), len(links) // 2
+assert lr == ll, f"#rects ({lr}) \u2260 #links ({ll})"
+rows = [SEP.join(
     [ chr(ord('a') + i) ] + [ str(c) for c in r ]
         + [ links[2 * i + 1] ] + [ links[2 * i] ])
     for i, r in enumerate(rects) ]
 # print('\n'.join(rows))
 
 # HTML templates for area, map, and doc.
-html_area_temp = """<area shape="rect" coords="{coords}" href="{href}" alt="{alt}"
-  onmouseover="light('{id}')" onmouseout="dark()" />"""
+html_area_temp = """  <area shape="rect" coords="{coords}" href="{href}" alt="{alt}"
+    onmouseover="light('{id}')" onmouseout="dark()" />"""
 html_map_temp = f"""<map name="ccsae-map">
 {{rects}}
 </map>"""
@@ -121,7 +155,7 @@ html_map = map=html_map_temp.format(rects=html_areas)
 # print(html_map)
 
 html_doc = html_doc_temp.format(
-    ver=version, imap=html_map, stc=show_through, uri=image_base, ext=image_ext)
+    ver=VER, imap=html_map, stc=COLOR, uri=image_base, ext=image_ext)
 # print(html_doc)
 
 # Write html_doc to path.
@@ -130,7 +164,7 @@ with open(path, 'w') as f:
     print(f"Writing {path}...")
     f.write(html_doc)
 """
-# Print links in original order 'AFBCDEHGIKLJMN', then alt text in original order.
+# Print links in original order 'AFBCDEHGIKLJMNOP', then alt text in original order.
 print()
 for i in range(len(links)):
     if i % 2 == 0: print(links[i])
@@ -138,3 +172,6 @@ print()
 for i in range(len(links)):
     if i % 2 == 1: print(links[i])
 """
+# A Google Drive image link format is:
+# image_uri = f"https://drive.google.com/thumbnail?sz=w{WIDTH}&id=1ar4V1rMkHv4eR4sxu3aK1VeCSMSKssRM"
+

@@ -2,7 +2,7 @@
 #
 # copy.py
 #
-# Compy CCSAE files from image_src dir to a fixed format in image_dest dir.
+# Copy CCSAE files from image_src dir to a fixed format in image_dest dir.
 #
 
 import os.path as op
@@ -10,8 +10,8 @@ import shutil as su
 
 image_src = '../ccsae-explainer-graphics/'  # image source directory
 image_dest = '../images/'                   # image destination directory
-image_base = 'fseicdace'                    # base filename of images
-image_ext = '.png'                          # image filename extension
+image_base = 'fseicdace'                    # base filename of destination images
+image_ext = '.png'                          # destination image filename extension
 
 # A list of 16 files in order.
 # - The 1st corresponds to f"{image_base}-a{ext}" 
@@ -41,7 +41,7 @@ files = [ l for l in """
 # Copy the files accordingly
 src_dir = op.realpath(op.join(op.dirname(op.realpath(__file__)), image_src))
 dest_dir = op.realpath(op.join(op.dirname(op.realpath(__file__)), image_dest))
-print(image_src, image_dest)
+# print(image_src, image_dest)
 
 for i, name in enumerate(files):
     from_path = op.join(src_dir, name)
